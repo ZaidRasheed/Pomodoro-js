@@ -1,0 +1,117 @@
+body{
+    background-color: #000000;
+    font-family: Orbitron;
+        font-weight: bold;
+}
+.date{
+    color: white;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+}
+.container{
+    width: 80%;
+    margin: 100px auto 0;
+    text-align: center;
+}
+.timer{
+    margin: 0 auto;
+}
+.timer>h1{
+    font-size: 4rem;
+    letter-spacing: 8px;
+    color: white;
+}
+.state{
+    color: #FD5D5D;
+    font-size: 4rem;
+}
+.button {
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 15px;
+    text-align: center;
+    transition: 200ms;
+    width: 100px;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 0 auto 20px;
+}
+.button:not(:disabled):hover,
+.button:not(:disabled):focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+}
+.button:disabled {
+    filter: saturate(0.2) opacity(0.5);
+    -webkit-filter: saturate(0.2) opacity(0.5);
+    cursor: not-allowed;
+}
+.buttons{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.start{
+    background-color: #4B8673;
+    color: #fff;
+}
+.start:hover{
+    background-color: #fff;
+    color: #4B8673;
+}
+.pause{
+    background-color: #FD5D5D;
+    color: #fff;
+}
+.pause:hover{
+    background-color: #fff;
+    color: #FD5D5D;
+}
+.resume{
+    background-color: #FFD93D;
+    color: #fff;
+}
+.resume:hover{
+    background-color: #fff;
+    color: #FFD93D;
+}
+.reset{
+    background-color: #4D96FF;
+    color: #fff;
+}
+.reset:hover{
+    background-color: #fff;
+    color: #4D96FF;
+}
+.clock{
+    color: #019267;
+    margin-bottom: 20px;
+}
+.clock>h1{
+    word-spacing: 4px;
+    letter-spacing: 2px;
+    font-size: 2.5rem;
+}
+
+@media only screen and (max-width:400px) {
+    .clock>h1{
+        font-size: 1.4rem;
+    }
+    .button{
+        width: 90px;
+    }
+}
+@media only screen and (max-width:450px) {
+    .timer>h1{
+        font-size: 2.3rem;
+        letter-spacing: 6px;
+    }
+    .state{
+        font-size: 2.3rem;
+    }
+}
