@@ -119,6 +119,7 @@ function count(num) {
 
 function pause() {
     if (timer.state === true) {
+        $(".start").attr("disabled", false);
         timer.state = false;
     }
 }
@@ -139,6 +140,7 @@ function reset() {
 
 function resume() {
     if (timer.state === false && timer.sec > 0) {
+        $(".start").attr("disabled", true);
         timer.state = true;
         count(timer.sec);
     }
@@ -165,6 +167,7 @@ $(".start").click(() => {
         });
     }
     else {
+        $(".start").attr("disabled", true);
         startTimer();
     }
 
