@@ -136,6 +136,7 @@ function reset() {
     $("#timer").text("25:00");
     $(".state").text("Pomodoro");
     $(".state").css("color", "#FD5D5D");
+    $(".start").attr("disabled", false);
 }
 
 function resume() {
