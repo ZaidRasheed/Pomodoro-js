@@ -84,14 +84,14 @@ function count(num) {
         timer.sec = num;
         updateTimer();
         const interval = setInterval(function () {
-            if(timer.state===false){
+            if (timer.state === false) {
                 clearInterval(interval);
                 return;
             }
-            
+
             timer.sec--;
             updateTimer();
-            
+
             if (!timer.sec) {
                 clearInterval(interval);
                 timer.state = false;
@@ -163,19 +163,36 @@ $(".start").click(() => {
             dangerMode: false,
         }).then((res1) => {
             if (res1) {
-                return startTimer();
+
+                startTimer();
+                $(".pause").attr("disabled", false);
+                $(".resume").attr("disabled", true);
+                $(".start").attr("disabled", true);
             }
         });
     }
     else {
-        $(".start").attr("disabled", true);
         startTimer();
+        $(".pause").attr("disabled", false);
+        $(".resume").attr("disabled", true);
+        $(".start").attr("disabled", true);
     }
-
-
 });
-$(".pause").click(pause);
-$(".resume").click(resume);
+
+$(".pause").click(() => {
+    if (timer.sec > 0 && timer.state === true) {
+        $(".pause").attr("disabled", true);
+        $(".resume").attr("disabled", false);
+        pause();
+    }
+});
+$(".resume").click(() => {
+    if (timer.sec > 0 && timer.state === false) {
+        $(".resume").attr("disabled", true);
+        $(".pause").attr("disabled", false);
+        resume();
+    }
+});
 
 $(".reset").click(() => {
     swal({
@@ -187,6 +204,8 @@ $(".reset").click(() => {
     }).then((res) => {
         if (res) {
             reset();
+            $(".resume").attr("disabled", false);
+            $(".pause").attr("disabled", true);
         }
     });
 });
