@@ -112,6 +112,9 @@ function count(num) {
                     TOTAL_WORKING += 25;
                     updateClock();
                 }
+                $(".start").attr("disabled", false);
+                $(".pause").attr("disabled", true);
+                $(".resume").attr("disabled", true);
             }
         }, 1000)
     }
@@ -163,7 +166,6 @@ $(".start").click(() => {
             dangerMode: false,
         }).then((res1) => {
             if (res1) {
-
                 startTimer();
                 $(".pause").attr("disabled", false);
                 $(".resume").attr("disabled", true);
