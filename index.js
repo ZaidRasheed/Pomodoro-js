@@ -1,24 +1,29 @@
 const WORK = 25;
 const SHORT_BREAK = 5;
 const LONG_BREAK = 15;
+
 var TOTAL_BREAKS = 0;
 var TOTAL_WORKING = 0;
 var REPS = 1;
-var timer = {
+
+const timer = {
     state: false,
     sec: 0,
 };
+
 const options = {
     year: "numeric",
     month: "long",
     day: "numeric",
 };
+
 let date = new Date();
 $(".date").text(date.toLocaleDateString("en", options));
 
 function startTimer() {
     if (timer.state === false) {
         timer.state = true;
+        $(".start").text('Restart')
 
         if (REPS % 8 === 0) {
             $(".state").text("Break");
@@ -44,23 +49,16 @@ function updateClock() {
     let breakMin = Math.floor(TOTAL_BREAKS / 60);
     let breakSec = Math.floor(TOTAL_BREAKS % 60);
 
-    // if(workMin<10){
-    //     workMin="0"+workMin;
-    // }
-
     if (workSec < 10) {
         workSec = "0" + workSec;
     }
 
-    // if(breakMin<10){
-    //     breakMin="0"+breakMin;
-    // }
-
     if (breakSec < 10) {
         breakSec = "0" + breakSec;
     }
-    $(".work").text("Work: " + workMin + "h  " + workSec + "mins");
-    $(".break").text("Breaks: " + breakMin + "h  " + breakSec + "mins");
+
+    $(".work").text("Work: " + workMin + "h  " + workSec);
+    $(".break").text("Breaks: " + breakMin + "h  " + breakSec);
 }
 
 function updateTimer() {
@@ -93,6 +91,7 @@ function count(num) {
             updateTimer();
 
             if (!timer.sec) {
+                $(".start").text('Start')
                 clearInterval(interval);
                 timer.state = false;
                 updateTimer();
@@ -134,6 +133,7 @@ function reset() {
     TOTAL_BREAKS = 0;
     TOTAL_WORKING = 0;
     REPS = 1;
+    $(".start").text('Start')
     $(".work").text("Work:");
     $(".break").text("Breaks:");
     $("#timer").text("25:00");
